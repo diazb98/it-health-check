@@ -1,0 +1,55 @@
+{
+  "thresholds": {
+    "responseWarnMs": 1500,
+    "responseFailMs": 5000,
+    "sslWarnDays": 30,
+    "sslFailDays": 7
+  },
+  "api": [
+    {
+      "name": "GitHub Status API",
+      "url": "https://www.githubstatus.com/api/v2/status.json",
+      "expectStatus": 200,
+      "expectText": "indicator",
+      "critical": true
+    },
+    {
+      "name": "API de usuarios (ejemplo)",
+      "url": "https://jsonplaceholder.typicode.com/users/1",
+      "expectStatus": 200,
+      "expectText": "email",
+      "critical": true
+    },
+    {
+      "name": "Servicio lento (demo)",
+      "url": "https://httpbin.org/delay/2",
+      "expectStatus": 200,
+      "critical": false
+    },
+    {
+      "name": "Servicio de demostración caído",
+      "url": "https://httpbin.org/status/503",
+      "expectStatus": 200,
+      "critical": false
+    }
+  ],
+  "ui": [
+    {
+      "name": "Portal de documentación",
+      "url": "https://playwright.dev",
+      "expectVisible": "text=Get started",
+      "critical": true
+    },
+    {
+      "name": "Login del sistema (Sauce Demo)",
+      "url": "https://www.saucedemo.com",
+      "expectVisible": "#login-button",
+      "critical": true
+    }
+  ],
+  "ssl": [
+    { "name": "GitHub", "host": "github.com" },
+    { "name": "Playwright", "host": "playwright.dev" },
+    { "name": "Certificado vencido (demo)", "host": "expired.badssl.com" }
+  ]
+}

@@ -35,7 +35,14 @@ npm run health
 npm run report
 ```
 
-> El ejemplo incluye **fallas intencionales** (un servicio que responde 503, uno lento y un certificado vencido) para que veas los tres colores del semáforo.
+`npm run health` revisa sistemas públicos reales y debería salir **todo en verde**.
+
+¿Quieres ver los tres colores del semáforo? Ejecuta la demo, que incluye **fallas intencionales** (un servicio que responde 503, uno lento y un certificado vencido):
+
+```bash
+npm run health:demo
+npm run report
+```
 
 ## Úsalo con tus propios sistemas
 
@@ -56,16 +63,10 @@ Edita [`config/targets.json`](config/targets.json):
 }
 ```
 
-También puedes mantener varios archivos (uno por ambiente) y elegir cuál usar:
+También puedes mantener varios archivos (uno por ambiente) y elegir cuál usar. Este comando funciona igual en Windows, macOS y Linux:
 
 ```bash
-# Linux / macOS
-TARGETS_FILE=config/produccion.json npm run health
-```
-
-```powershell
-# Windows (PowerShell)
-$env:TARGETS_FILE="config/produccion.json"; npm run health
+node scripts/run-with.mjs config/produccion.json
 ```
 
 ## Comandos
@@ -76,6 +77,7 @@ $env:TARGETS_FILE="config/produccion.json"; npm run health
 | `npm run health:api` | Solo APIs y servicios |
 | `npm run health:ui` | Solo páginas web |
 | `npm run health:ssl` | Solo certificados |
+| `npm run health:demo` | Demo con fallas intencionales (los tres colores) |
 | `npm run report` | Abre el reporte HTML |
 | `npm run screenshots` | Genera capturas del reporte (claro y oscuro) en `docs/` |
 
@@ -93,6 +95,7 @@ Incluye un workflow de GitHub Actions ([`.github/workflows/health-check.yml`](.g
 
 ```
 config/targets.json         ← qué revisar (lo único que necesitas editar)
+config/demo.json            ← ejemplo con fallas intencionales
 tests/api.spec.ts           ← chequeos HTTP
 tests/ui.spec.ts            ← chequeos con navegador real
 tests/ssl.spec.ts           ← vigencia de certificados

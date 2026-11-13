@@ -8,6 +8,7 @@
     "health:api": "playwright test --project=api",
     "health:ui": "playwright test --project=ui",
     "health:ssl": "playwright test --project=ssl",
+    "health:demo": "node scripts/run-with.mjs config/demo.json",
     "report": "node scripts/open-report.mjs",
     "screenshots": "node scripts/screenshot-report.mjs"
   },

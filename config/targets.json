@@ -19,18 +19,6 @@
       "expectStatus": 200,
       "expectText": "email",
       "critical": true
-    },
-    {
-      "name": "Servicio lento (demo)",
-      "url": "https://httpbin.org/delay/2",
-      "expectStatus": 200,
-      "critical": false
-    },
-    {
-      "name": "Servicio de demostración caído",
-      "url": "https://httpbin.org/status/503",
-      "expectStatus": 200,
-      "critical": false
     }
   ],
   "ui": [
@@ -49,7 +37,6 @@
   ],
   "ssl": [
     { "name": "GitHub", "host": "github.com" },
-    { "name": "Playwright", "host": "playwright.dev" },
-    { "name": "Certificado vencido (demo)", "host": "expired.badssl.com" }
+    { "name": "Playwright", "host": "playwright.dev" }
   ]
 }
