@@ -1,0 +1,8 @@
+node_modules/
+test-results/
+health-report/
+playwright-report/
+blob-report/
+
+# Borrador personal, no se publica en el repositorio
+LINKEDIN_POST.md

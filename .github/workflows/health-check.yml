@@ -1,0 +1,32 @@
+name: IT Health Check
+
+on:
+  schedule:
+    - cron: '0 12 * * 1-5' # lunes a viernes, 12:00 UTC
+  workflow_dispatch: # permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Ejecutar chequeo de salud
+        run: npm run health
+
+      - name: Publicar reporte
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-report
+          path: health-report/
+          retention-days: 14

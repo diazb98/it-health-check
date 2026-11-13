@@ -1,0 +1,21 @@
+{
+  "name": "it-health-check",
+  "version": "1.0.0",
+  "description": "Chequeo automatizado de salud de sistemas TI con Playwright: APIs, páginas web y certificados SSL, con reporte HTML de semáforos.",
+  "private": true,
+  "scripts": {
+    "health": "playwright test",
+    "health:api": "playwright test --project=api",
+    "health:ui": "playwright test --project=ui",
+    "health:ssl": "playwright test --project=ssl",
+    "report": "node scripts/open-report.mjs",
+    "screenshots": "node scripts/screenshot-report.mjs"
+  },
+  "keywords": ["playwright", "qa", "monitoring", "health-check", "ssl", "it"],
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
